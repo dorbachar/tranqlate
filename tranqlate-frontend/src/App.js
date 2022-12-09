@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import {Route, Redirect, Switch, BrowserRouter} from "react-router-dom";
+import {NotFound} from "./pages/NotFound";
+import {Translate} from "./pages/Translate";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <header>
+                <h1>tranQlate</h1>
+            </header>
+            <main>
+                <article>
+                    <BrowserRouter>
+                        <Switch>
+                            <Route path="/" exact>
+                                <Translate/>
+                            </Route>
+                            <Route path="/404">
+                                <NotFound/>
+                            </Route>
+                            <Route>
+                                <Redirect to="/404"/>
+                            </Route>
+                        </Switch>
+                    </BrowserRouter>
+                </article>
+            </main>
+        </>
+    );
 }
 
 export default App;
