@@ -2,11 +2,12 @@ import './App.css';
 import {Route, Redirect, Switch, BrowserRouter} from "react-router-dom";
 import {NotFound} from "./pages/NotFound";
 import {Translate} from "./pages/Translate";
+import styles from "./styles/general.module.scss"
 
 function App() {
     return (
         <>
-            <header>
+            <header className={styles["title"]}>
                 <h1>tranQlate</h1>
             </header>
             <main>
