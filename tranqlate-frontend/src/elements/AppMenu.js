@@ -36,17 +36,15 @@ export function AppMenu() {
                     <DrawerHeader></DrawerHeader>
 
                     <DrawerBody>
-                        {/*<Flex direction={"column"} textAlign={"left"}>*/}
-                            <Button leftIcon={<RiTranslate/>} colorScheme='teal' variant={"ghost"}>
-                                Translate
-                            </Button>
-                            <Button leftIcon={<BiBrain/>} colorScheme='teal' variant={"ghost"}>
-                                Quiz
-                            </Button>
-                            <Button leftIcon={<BsClockHistory/>} colorScheme='teal' variant={"ghost"}>
-                                History
-                            </Button>
-                        {/*</Flex>*/}
+                        <Button leftIcon={<RiTranslate/>} colorScheme='teal' variant={"ghost"}>
+                            Translate
+                        </Button>
+                        <Button leftIcon={<BiBrain/>} colorScheme='teal' variant={"ghost"}>
+                            Quiz
+                        </Button>
+                        <Button leftIcon={<BsClockHistory/>} colorScheme='teal' variant={"ghost"}>
+                            History
+                        </Button>
                     </DrawerBody>
 
                     <DrawerFooter justifyContent={"center"}>
