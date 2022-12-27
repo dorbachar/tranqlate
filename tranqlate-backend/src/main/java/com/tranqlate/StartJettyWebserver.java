@@ -13,7 +13,6 @@ public class StartJettyWebserver {
         ServletHandler handler = new ServletHandler();
         handler.addServletWithMapping(TranslationsController.class, "/*");
 
-            // fake row
         server.setHandler(handler);
         server.start();
         server.join();
