@@ -4,7 +4,7 @@ import {useContext} from "react";
 import {TranqlateContext} from "../TranqlateContextProvider";
 
 export function TranslateInput() {
-    const {inputText, setInputText, setOutputText} = useContext(TranqlateContext);
+    const {inputText, setInputText, setOutputText, inputLanguageIndex, setInputLanguageIndex} = useContext(TranqlateContext);
 
     function callApiOnEnter(input) {
         return (e) => {
@@ -21,7 +21,7 @@ export function TranslateInput() {
     return (<>
         <Card>
             <CardHeader>
-                <LanguageTabs/>
+                <LanguageTabs tabIndex={inputLanguageIndex} setTabIndex={setInputLanguageIndex}/>
             </CardHeader>
             <CardBody>
                 <Input value={inputText}

@@ -4,12 +4,12 @@ import {useContext} from "react";
 import {TranqlateContext} from "../TranqlateContextProvider";
 
 export function TranslateOutput() {
-    const {outputText} = useContext(TranqlateContext);
+    const {outputText, outputLanguageIndex, setOutputLanguageIndex} = useContext(TranqlateContext);
 
     return (<>
         <Card>
             <CardHeader>
-                <LanguageTabs/>
+                <LanguageTabs tabIndex={outputLanguageIndex} setTabIndex={setOutputLanguageIndex}/>
             </CardHeader>
             <CardBody>
                 <Text>
