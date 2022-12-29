@@ -1,17 +1,19 @@
 import {Card, CardBody, CardHeader, Input} from "@chakra-ui/react";
 import {LanguageTabs} from "./LanguageTabs";
-import {getAPI} from "../services/api";
-import {getValue} from "@testing-library/user-event/dist/utils";
-import {useState} from "react";
+import {useContext} from "react";
+import {TranqlateContext} from "../TranqlateContextProvider";
 
 export function TranslateInput() {
-    const [input, setInput] = useState("");
+    const {inputText, setInputText, setOutputText} = useContext(TranqlateContext);
 
     function callApiOnEnter(input) {
         return (e) => {
             if (e.key === "Enter") {
-                getAPI(input).then(r => {
-                });
+                // getAPI(input).then(() => {
+                // });
+
+                // todo temp code below just prints input on enter
+                setOutputText(inputText);
             }
         };
     }
@@ -22,11 +24,10 @@ export function TranslateInput() {
                 <LanguageTabs/>
             </CardHeader>
             <CardBody>
-                <Input value={input}
+                <Input value={inputText}
                        border={"white"}
-                       onKeyUp={callApiOnEnter(input)}
-                       onChange={(e) => setInput(e.target.value)}>
-
+                       onKeyUp={callApiOnEnter(inputText)}
+                       onChange={(e) => setInputText(e.target.value)}>
                 </Input>
             </CardBody>
         </Card>

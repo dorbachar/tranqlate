@@ -7,28 +7,30 @@ import {Translate} from "./pages/Translate";
 import {Quiz} from "./pages/Quiz";
 import {NotFound} from "./pages/NotFound";
 import {History} from "./pages/History";
+import TranqlateContextProvider from "./TranqlateContextProvider";
 
 function App() {
     return (
         <>
             <BrowserRouter>
                 <ChakraProvider>
-                    <header className={styles["title"]}>
-                        <AppMenu/>
-                        <Heading size="md" className={styles["actual-title"]}>tranQlate</Heading>
-                    </header>
-                    <main>
-                        <article>
-                            <Routes>
-                                <Route path='*' element={<NotFound/>}/>
-                                <Route path="/" exact element={<Navigate to={"/translate"}/>}/>
-
-                                <Route path="/translate" exact element={<Translate/>}/>
-                                <Route path="/quiz" element={<Quiz/>}/>
-                                <Route path="/history" element={<History/>}/>
-                            </Routes>
-                        </article>
-                    </main>
+                    <TranqlateContextProvider>
+                        <header className={styles["title"]}>
+                            <AppMenu/>
+                            <Heading size="md" className={styles["actual-title"]}>tranQlate</Heading>
+                        </header>
+                        <main>
+                            <article>
+                                <Routes>
+                                    <Route path='*' element={<NotFound/>}/>
+                                    <Route path="/" exact element={<Navigate to={"/translate"}/>}/>
+                                    <Route path="/translate" exact element={<Translate/>}/>
+                                    <Route path="/quiz" element={<Quiz/>}/>
+                                    <Route path="/history" element={<History/>}/>
+                                </Routes>
+                            </article>
+                        </main>
+                    </TranqlateContextProvider>
                 </ChakraProvider>
             </BrowserRouter>
         </>
