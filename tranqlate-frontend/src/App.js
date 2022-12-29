@@ -7,7 +7,7 @@ import {Translate} from "./pages/Translate";
 import {Quiz} from "./pages/Quiz";
 import {NotFound} from "./pages/NotFound";
 import {History} from "./pages/History";
-import TranqlateContextProvider from "./TranqlateContextProvider";
+import TranqlateContextProvider from "./providers/TranqlateContextProvider";
 
 function App() {
     return (

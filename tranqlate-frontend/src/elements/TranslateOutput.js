@@ -1,7 +1,7 @@
 import {Card, CardBody, CardHeader, Text} from "@chakra-ui/react";
 import {LanguageTabs} from "./LanguageTabs";
 import {useContext} from "react";
-import {TranqlateContext} from "../TranqlateContextProvider";
+import {TranqlateContext} from "../providers/TranqlateContextProvider";
 
 export function TranslateOutput() {
     const {outputText, outputLanguageIndex, setOutputLanguageIndex} = useContext(TranqlateContext);

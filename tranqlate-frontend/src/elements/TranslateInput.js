@@ -1,9 +1,9 @@
 import {Card, CardBody, CardHeader, Input} from "@chakra-ui/react";
 import {LanguageTabs} from "./LanguageTabs";
 import {useContext} from "react";
-import {TranqlateContext} from "../TranqlateContextProvider";
+import {TranqlateContext} from "../providers/TranqlateContextProvider";
 
-export function TranslateInput() {
+const TranslateInput = () => {
     const {inputText, setInputText, setOutputText, inputLanguageIndex, setInputLanguageIndex} = useContext(TranqlateContext);
 
     function callApiOnEnter(input) {
@@ -33,3 +33,5 @@ export function TranslateInput() {
         </Card>
     </>)
 }
+
+export default TranslateInput;

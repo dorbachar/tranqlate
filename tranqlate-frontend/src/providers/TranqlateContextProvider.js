@@ -13,17 +13,17 @@ const TranqlateContextProvider = ({children}) => {
 
     const onUpdateLanguage = (value, type) => {
         if (type === "input") {
-            if (value !== outputLanguageIndex) {
+            if (value === outputLanguageIndex) {
                 setInputLanguageIndex(value);
-            } else {
                 setOutputLanguageIndex(inputLanguageIndex);
+            } else {
                 setInputLanguageIndex(value);
             }
         } else {
-            if (value !== inputLanguageIndex) {
+            if (value === inputLanguageIndex) {
                 setOutputLanguageIndex(value);
-            } else {
                 setInputLanguageIndex(outputLanguageIndex);
+            } else {
                 setOutputLanguageIndex(value);
             }
         }

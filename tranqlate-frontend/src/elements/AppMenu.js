@@ -9,7 +9,7 @@ import {
     DrawerOverlay,
     useDisclosure
 } from "@chakra-ui/react";
-import {useRef} from "react";
+import {useContext, useRef} from "react";
 import {HamburgerIcon} from "@chakra-ui/icons";
 import {RiTranslate} from "react-icons/ri";
 import {BiBrain} from "react-icons/bi";
@@ -30,7 +30,7 @@ export function AppMenu() {
 
     return (
         <>
-            <Button ref={btnRef} colorScheme='teal' onClick={onOpen} borderRadius={"100px"} variant={"ghost"}>
+            <Button ref={btnRef} onClick={onOpen} borderRadius="100px" variant="ghost">
                 <HamburgerIcon/>
             </Button>
             <Drawer
@@ -46,19 +46,19 @@ export function AppMenu() {
 
                     <DrawerBody>
                         <Button leftIcon={<RiTranslate/>}
-                                colorScheme='teal'
+                                
                                 variant={"ghost"}
                                 onClick={() => handleClick("/translate")}>
                             Translate
                         </Button>
                         <Button leftIcon={<BiBrain/>}
-                                colorScheme='teal'
+                                
                                 variant={"ghost"}
                                 onClick={() => handleClick("/quiz")}>
                             Quiz
                         </Button>
                         <Button leftIcon={<BsClockHistory/>}
-                                colorScheme='teal'
+                                
                                 variant={"ghost"}
                                 onClick={() => handleClick("/history")}>
                             History
@@ -66,7 +66,7 @@ export function AppMenu() {
                     </DrawerBody>
 
                     <DrawerFooter justifyContent={"center"}>
-                        <Button onClick={getAPI} colorScheme='teal'>Try API</Button>
+                        <Button onClick={getAPI} >Try API</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
