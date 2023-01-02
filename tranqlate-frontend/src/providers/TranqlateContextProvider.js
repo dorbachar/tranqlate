@@ -27,11 +27,18 @@ const TranqlateContextProvider = ({children}) => {
                 setOutputLanguageIndex(value);
             }
         }
+        clearText();
+    }
+
+    const clearText = () => {
+        setInputText("");
+        setOutputText("");
     }
 
     const onSwitchLanguage = () => {
         setOutputLanguageIndex(inputLanguageIndex);
         setInputLanguageIndex(outputLanguageIndex);
+        clearText();
     }
 
     const ctx = {

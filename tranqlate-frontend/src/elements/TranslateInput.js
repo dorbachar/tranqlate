@@ -36,9 +36,15 @@ const TranslateInput = () => {
                 <Input value={inputText}
                        border={"white"}
                        onKeyUp={callApiOnEnter(inputText)}
-                       onChange={(e) => setInputText(e.target.value)}
+                       onChange={(e) => {
+                           setTimeout(() => setOutputText(""), 200);
+                           return setInputText(e.target.value);
+                       }}
                        variant="unstyled"
-                       ref={inputRef}>
+                       ref={inputRef}
+                       placeholder="Translate..."
+                       onFocus={(e) => e.target.placeholder = ""}
+                       onBlur={(e) => e.target.placeholder = "Translate..."}>
                 </Input>
             </CardBody>
         </Card>
