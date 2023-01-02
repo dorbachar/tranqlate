@@ -1,10 +1,16 @@
 import {Card, CardBody, CardHeader, Input} from "@chakra-ui/react";
 import {LanguageTabs} from "./LanguageTabs";
-import {useContext} from "react";
+import {useContext, useRef} from "react";
 import {TranqlateContext} from "../providers/TranqlateContextProvider";
 
 const TranslateInput = () => {
-    const {inputText, setInputText, setOutputText, inputLanguageIndex, setInputLanguageIndex} = useContext(TranqlateContext);
+    const {
+        inputText,
+        setInputText,
+        setOutputText,
+        inputLanguageIndex,
+        setInputLanguageIndex
+    } = useContext(TranqlateContext);
 
     function callApiOnEnter(input) {
         return (e) => {
@@ -14,9 +20,12 @@ const TranslateInput = () => {
 
                 // todo temp code below just prints input on enter
                 setOutputText(inputText);
+                inputRef.current.blur();
             }
         };
     }
+
+    const inputRef = useRef(null);
 
     return (<>
         <Card>
@@ -27,7 +36,9 @@ const TranslateInput = () => {
                 <Input value={inputText}
                        border={"white"}
                        onKeyUp={callApiOnEnter(inputText)}
-                       onChange={(e) => setInputText(e.target.value)}>
+                       onChange={(e) => setInputText(e.target.value)}
+                       variant="unstyled"
+                       ref={inputRef}>
                 </Input>
             </CardBody>
         </Card>
