@@ -29,6 +29,11 @@ const TranqlateContextProvider = ({children}) => {
         }
     }
 
+    const onSwitchLanguage = () => {
+        setOutputLanguageIndex(inputLanguageIndex);
+        setInputLanguageIndex(outputLanguageIndex);
+    }
+
     const ctx = {
         inputText,
         setInputText,
@@ -42,7 +47,8 @@ const TranqlateContextProvider = ({children}) => {
         outputLanguageIndex,
         setOutputLanguageIndex: ((newInput) => onUpdateLanguage(newInput, "output")),
 
-        LANGUAGES
+        LANGUAGES,
+        onSwitchLanguage
     };
 
     return <TranqlateContext.Provider value={ctx}>
