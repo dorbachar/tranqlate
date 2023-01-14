@@ -1,7 +1,7 @@
 import {Card} from '@chakra-ui/react'
-import TranslateInput from "../elements/TranslateInput";
-import {TranslateOutput} from "../elements/TranslateOutput";
-import SwitchLangButton from "../elements/SwitchLangButton";
+import TranslateInput from "../components/TranslateInput";
+import {TranslateOutput} from "../components/TranslateOutput";
+import SwitchLangButton from "../components/SwitchLangButton";
 
 export function Translate() {
     return (

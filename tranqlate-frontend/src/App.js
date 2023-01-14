@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import styles from "./styles/general.module.scss"
 import {ChakraProvider, Heading} from '@chakra-ui/react'
-import {AppMenu} from "./elements/AppMenu";
+import {AppMenu} from "./components/AppMenu";
 import {Translate} from "./pages/Translate";
 import {Quiz} from "./pages/Quiz";
 import {NotFound} from "./pages/NotFound";

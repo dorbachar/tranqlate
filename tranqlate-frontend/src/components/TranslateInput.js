@@ -2,32 +2,36 @@ import {Card, CardBody, CardHeader, Input} from "@chakra-ui/react";
 import {LanguageTabs} from "./LanguageTabs";
 import {useContext, useRef} from "react";
 import {TranqlateContext} from "../providers/TranqlateContextProvider";
+import {translateText} from "../services/api";
+import {get} from "lodash/fp"
 
 const TranslateInput = () => {
     const {
         inputText,
         setInputText,
         setOutputText,
+        outputLanguageIndex,
         inputLanguageIndex,
-        setInputLanguageIndex
-    } = useContext(TranqlateContext);
+        setInputLanguageIndex,
+        LANGUAGE_API
+    } = useContext(TranqlateContext)
 
-    function callApiOnEnter(input) {
-        return (e) => {
+    const inputRef = useRef(null)
+
+    function callApiOnEnter(input, sourceLanguage, targetLanguage) {
+        return async (e) => {
             if (e.key === "Enter") {
-                // getAPI(input).then(() => {
-                // });
-
-                // todo temp code below just prints input on enter
-                setOutputText(inputText);
                 inputRef.current.blur();
+                const res = await translateText(input, sourceLanguage, targetLanguage)
+                setOutputText(get("translation", res))
+            } else if (e.key === "Backspace") {
+                setTimeout(() => setOutputText(""), 200);
             }
         };
     }
 
-    const inputRef = useRef(null);
 
-    return (<>
+    return <>
         <Card>
             <CardHeader>
                 <LanguageTabs tabIndex={inputLanguageIndex} setTabIndex={setInputLanguageIndex}/>
@@ -35,11 +39,8 @@ const TranslateInput = () => {
             <CardBody>
                 <Input value={inputText}
                        border={"white"}
-                       onKeyUp={callApiOnEnter(inputText)}
-                       onChange={(e) => {
-                           setTimeout(() => setOutputText(""), 200);
-                           return setInputText(e.target.value);
-                       }}
+                       onKeyUp={callApiOnEnter(inputText, LANGUAGE_API[inputLanguageIndex], LANGUAGE_API[outputLanguageIndex])}
+                       onChange={e => setInputText(e.target.value)}
                        variant="unstyled"
                        ref={inputRef}
                        placeholder="Translate..."
@@ -48,7 +49,7 @@ const TranslateInput = () => {
                 </Input>
             </CardBody>
         </Card>
-    </>)
+    </>
 }
 
-export default TranslateInput;
+export default TranslateInput

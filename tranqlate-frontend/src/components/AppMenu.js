@@ -9,13 +9,12 @@ import {
     DrawerOverlay,
     useDisclosure
 } from "@chakra-ui/react";
-import {useContext, useRef} from "react";
+import {useRef} from "react";
 import {HamburgerIcon} from "@chakra-ui/icons";
 import {RiTranslate} from "react-icons/ri";
 import {BiBrain} from "react-icons/bi";
 import {BsClockHistory} from "react-icons/bs";
 import {useNavigate} from "react-router-dom";
-import {getAPI} from "../services/api";
 
 export function AppMenu() {
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -46,19 +45,16 @@ export function AppMenu() {
 
                     <DrawerBody>
                         <Button leftIcon={<RiTranslate/>}
-                                
                                 variant={"ghost"}
                                 onClick={() => handleClick("/translate")}>
                             Translate
                         </Button>
                         <Button leftIcon={<BiBrain/>}
-                                
                                 variant={"ghost"}
                                 onClick={() => handleClick("/quiz")}>
                             Quiz
                         </Button>
                         <Button leftIcon={<BsClockHistory/>}
-                                
                                 variant={"ghost"}
                                 onClick={() => handleClick("/history")}>
                             History
@@ -66,7 +62,6 @@ export function AppMenu() {
                     </DrawerBody>
 
                     <DrawerFooter justifyContent={"center"}>
-                        <Button onClick={getAPI} >Try API</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

@@ -9,7 +9,8 @@ const TranqlateContextProvider = ({children}) => {
     const [inputLanguageIndex, setInputLanguageIndex] = useState(0);
     const [outputLanguageIndex, setOutputLanguageIndex] = useState(1);
 
-    const LANGUAGES = {0: "Hebrew", 1: "English", 2: "Spanish"};
+    const LANGUAGE_INDEX_TO_DISPLAY_NAME = {0: "Hebrew", 1: "English", 2: "Spanish"};
+    const LANGUAGE_INDEX_TO_API_NAME = {0: "he", 1: "en", 2: "es"};
 
     const onUpdateLanguage = (value, type) => {
         if (type === "input") {
@@ -54,7 +55,8 @@ const TranqlateContextProvider = ({children}) => {
         outputLanguageIndex,
         setOutputLanguageIndex: ((newInput) => onUpdateLanguage(newInput, "output")),
 
-        LANGUAGES,
+        LANGUAGES: LANGUAGE_INDEX_TO_DISPLAY_NAME,
+        LANGUAGE_API: LANGUAGE_INDEX_TO_API_NAME,
         onSwitchLanguage
     };
 
