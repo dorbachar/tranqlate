@@ -15,7 +15,6 @@ import {RiTranslate} from "react-icons/ri";
 import {BiBrain} from "react-icons/bi";
 import {BsClockHistory} from "react-icons/bs";
 import {useNavigate} from "react-router-dom";
-import {getAPI} from "../services/api";
 
 export function AppMenu() {
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -30,7 +29,7 @@ export function AppMenu() {
 
     return (
         <>
-            <Button ref={btnRef} colorScheme='teal' onClick={onOpen} borderRadius={"100px"} variant={"ghost"}>
+            <Button ref={btnRef} onClick={onOpen} borderRadius="100px" variant="ghost">
                 <HamburgerIcon/>
             </Button>
             <Drawer
@@ -46,19 +45,16 @@ export function AppMenu() {
 
                     <DrawerBody>
                         <Button leftIcon={<RiTranslate/>}
-                                colorScheme='teal'
                                 variant={"ghost"}
                                 onClick={() => handleClick("/translate")}>
                             Translate
                         </Button>
                         <Button leftIcon={<BiBrain/>}
-                                colorScheme='teal'
                                 variant={"ghost"}
                                 onClick={() => handleClick("/quiz")}>
                             Quiz
                         </Button>
                         <Button leftIcon={<BsClockHistory/>}
-                                colorScheme='teal'
                                 variant={"ghost"}
                                 onClick={() => handleClick("/history")}>
                             History
@@ -66,7 +62,6 @@ export function AppMenu() {
                     </DrawerBody>
 
                     <DrawerFooter justifyContent={"center"}>
-                        <Button onClick={getAPI} colorScheme='teal'>Try API</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
