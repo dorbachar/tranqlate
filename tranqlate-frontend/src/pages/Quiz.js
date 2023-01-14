@@ -1,5 +1,5 @@
 export function Quiz() {
     return <>
-        <p>quizez page</p>
+        <p>quiz page</p>
     </>
 }
