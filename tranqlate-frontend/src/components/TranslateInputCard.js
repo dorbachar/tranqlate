@@ -5,7 +5,7 @@ import {TranqlateContext} from "../providers/TranqlateContextProvider";
 import {translateText} from "../services/api";
 import {get} from "lodash/fp"
 
-const TranslateInput = () => {
+const TranslateInputCard = () => {
     const {
         inputText,
         setInputText,
@@ -30,7 +30,6 @@ const TranslateInput = () => {
         };
     }
 
-
     return <>
         <Card>
             <CardHeader>
@@ -52,4 +51,4 @@ const TranslateInput = () => {
     </>
 }
 
-export default TranslateInput
+export default TranslateInputCard

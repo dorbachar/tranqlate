@@ -3,7 +3,7 @@ import {LanguageTabs} from "./LanguageTabs";
 import {useContext} from "react";
 import {TranqlateContext} from "../providers/TranqlateContextProvider";
 
-export function TranslateOutput() {
+export function TranslateOutputCard() {
     const {outputText, outputLanguageIndex, setOutputLanguageIndex} = useContext(TranqlateContext);
 
     return (<>
