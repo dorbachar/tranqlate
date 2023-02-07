@@ -4,6 +4,7 @@ import {useContext, useRef} from "react";
 import {TranqlateContext} from "../providers/TranqlateContextProvider";
 import {translateText} from "../services/api";
 import {get} from "lodash/fp"
+import {StorageContext} from "../providers/StorageContextProvider";
 
 const TranslateInputCard = () => {
     const {
@@ -16,6 +17,10 @@ const TranslateInputCard = () => {
         LANGUAGE_API
     } = useContext(TranqlateContext)
 
+    const {
+        onTranslationComplete
+    } = useContext(StorageContext)
+
     const inputRef = useRef(null)
 
     function callApiOnEnter(input, sourceLanguage, targetLanguage) {
@@ -23,7 +28,9 @@ const TranslateInputCard = () => {
             if (e.key === "Enter") {
                 inputRef.current.blur();
                 const res = await translateText(input, sourceLanguage, targetLanguage)
-                setOutputText(get("translation", res))
+                const translation = get("translation", res);
+                setOutputText(translation)
+                onTranslationComplete(input, translation)
             } else if (e.key === "Backspace") {
                 setTimeout(() => setOutputText(""), 200);
             }
