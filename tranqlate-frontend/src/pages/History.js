@@ -11,7 +11,7 @@ export function History() {
     } = useContext(StorageContext)
 
     return (<TableContainer>
-            <Table variant='simple' colorScheme='blue'>
+            <Table variant='simple' colorScheme='blue' size="sm">
                 <TableCaption placement="top">Translations History</TableCaption>
                 <Thead>
                     <Tr background="#f5fcfc">
