@@ -30,7 +30,7 @@ const TranslateInputCard = () => {
                 const res = await translateText(input, sourceLanguage, targetLanguage)
                 const translation = get("translation", res);
                 setOutputText(translation)
-                onTranslationComplete(input, translation)
+                onTranslationComplete(res)
             } else if (e.key === "Backspace") {
                 setTimeout(() => setOutputText(""), 200);
             }
