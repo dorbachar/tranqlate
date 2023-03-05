@@ -1,20 +1,19 @@
 import {
-    Button, Divider, Flex,
+    Button,
     Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
     ModalFooter,
     ModalHeader,
-    ModalOverlay, SlideFade,
+    ModalOverlay,
     useDisclosure,
     useToast
 } from "@chakra-ui/react";
 import {useContext, useState} from "react";
 import {StorageContext} from "../providers/StorageContextProvider";
 import SimpleQuizQuestion from "./SimpleQuizQuestion";
-import {IoMdArrowDroprightCircle, IoMdArrowDropleftCircle} from "react-icons/io";
-import {IconContext} from "react-icons";
+import {IoMdArrowDropleftCircle, IoMdArrowDroprightCircle} from "react-icons/io";
 
 const noQuizAlert = (toast) => {
     return () =>

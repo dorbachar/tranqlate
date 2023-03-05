@@ -1,5 +1,4 @@
-import {Text, Button, Card, CardBody, CardFooter, CardHeader, Heading, SimpleGrid, Flex} from "@chakra-ui/react";
-import {GiKidSlide} from "react-icons/gi";
+import {Button, Card, CardBody, CardFooter, CardHeader, Flex, Heading, SimpleGrid, Text} from "@chakra-ui/react";
 import SimpleQuiz from "../quizes/SimpleQuiz";
 
 export function Quiz() {
