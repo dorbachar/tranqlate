@@ -49,6 +49,9 @@ const SimpleQuiz = () => {
     const quizWords = []
     const randIndices = []
     for (let i = 0; i < 5; i++) {
+        if (!enoughWords) {
+            break;
+        }
         const randIndex = generateRandom(numWords, randIndices);
         quizWords.push({
             word: translationsHistory[randIndex],
@@ -68,15 +71,18 @@ const SimpleQuiz = () => {
                     <Button onClick={onOpen} colorScheme="teal">Start</Button> :
                     <Button onClick={noQuizAlert(toast)} colorScheme="teal">Start</Button>
             }
-            <Modal onClose={() => {setNumQuestion(0); onClose()}} isOpen={isOpen} isCentered>
+            <Modal onClose={() => {
+                setNumQuestion(0);
+                onClose()
+            }} isOpen={isOpen} isCentered>
                 <ModalOverlay/>
                 <ModalContent>
                     <ModalHeader>Translation Challenge</ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                            {
-                                allQuestions[numQuestion]
-                            }
+                        {
+                            allQuestions[numQuestion]
+                        }
                     </ModalBody>
                     <ModalFooter>
                         <Button disabled={numQuestion === 0} colorScheme="teal" variant="ghost"
