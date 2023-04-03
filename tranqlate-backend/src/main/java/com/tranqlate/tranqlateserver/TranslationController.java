@@ -2,6 +2,8 @@ package com.tranqlate.tranqlateserver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,6 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
-
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -27,8 +28,18 @@ public class TranslationController {
         Translation translation = translate.translate(input,
                 Translate.TranslateOption.sourceLanguage(sourceLanguage),
                 Translate.TranslateOption.targetLanguage(targetLanguage));
-        System.out.println(translation.getTranslatedText());
 
-        return "{ \"translation\":\"" + translation.getTranslatedText() + "\"}";
+        final LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String time = now.format(formatter);
+
+        final String fullResponse = "{\"input\":\"" + input + "\"," +
+                "\"translation\":\"" + translation.getTranslatedText() + "\"," +
+                "\"sourceLanguage\":\"" + translation.getSourceLanguage() + "\"," +
+                "\"targetLanguage\":\"" + targetLanguage + "\"," +
+                "\"time\":\"" + time + "\"}";
+        System.out.println(fullResponse);
+
+        return fullResponse;
     }
 }

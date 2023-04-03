@@ -1,11 +1,12 @@
-import {Card, CardBody, CardHeader, Input} from "@chakra-ui/react";
+import {Card, CardBody, CardHeader, Input, useToast} from "@chakra-ui/react";
 import {LanguageTabs} from "./LanguageTabs";
 import {useContext, useRef} from "react";
 import {TranqlateContext} from "../providers/TranqlateContextProvider";
 import {translateText} from "../services/api";
 import {get} from "lodash/fp"
+import {StorageContext} from "../providers/StorageContextProvider";
 
-const TranslateInput = () => {
+const TranslateInputCard = () => {
     const {
         inputText,
         setInputText,
@@ -16,20 +17,39 @@ const TranslateInput = () => {
         LANGUAGE_API
     } = useContext(TranqlateContext)
 
+    const {
+        onTranslationComplete
+    } = useContext(StorageContext)
+
+    const toast = useToast()
+
     const inputRef = useRef(null)
 
     function callApiOnEnter(input, sourceLanguage, targetLanguage) {
         return async (e) => {
             if (e.key === "Enter") {
                 inputRef.current.blur();
-                const res = await translateText(input, sourceLanguage, targetLanguage)
-                setOutputText(get("translation", res))
+                let res;
+                try {
+                    res = await translateText(input, sourceLanguage, targetLanguage)
+                } catch (e) {
+                    toast({
+                        title: 'Server Offline!',
+                        description: "No response from tranQlate server. It seems like the server is down.",
+                        status: 'error',
+                        duration: 5000,
+                        isClosable: false,
+                    })
+                }
+
+                const translation = get("translation", res);
+                setOutputText(translation)
+                onTranslationComplete(res)
             } else if (e.key === "Backspace") {
                 setTimeout(() => setOutputText(""), 200);
             }
         };
     }
-
 
     return <>
         <Card>
@@ -52,4 +72,4 @@ const TranslateInput = () => {
     </>
 }
 
-export default TranslateInput
+export default TranslateInputCard

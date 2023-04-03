@@ -11,7 +11,7 @@ export function LanguageTabs({tabIndex, setTabIndex}) {
             <Tabs index={tabIndex} onChange={setTabIndex}>
                 <TabList>
                     {
-                        Object.values(LANGUAGES).map((lang) => <Tab key={uuid()}>{lang}</Tab>)
+                        Object.values(LANGUAGES).map((lang) => <Tab key={uuid()}>{lang}</Tab>) // todo can simplify, look at history page
                     }
                 </TabList>
             </Tabs>
